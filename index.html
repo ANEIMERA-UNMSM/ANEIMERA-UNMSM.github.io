@@ -26,9 +26,9 @@
             background-color: #B00000; /* Un rojo más oscuro para el hover */
         }
 
-        /* Estilo para el fondo del Hero */
+        /* Estilo para el fondo del Hero - AHORA USA RUTA RELATIVA */
         .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://fiee.unmsm.edu.pe/wp-content/uploads/2021/08/edificio-fiee.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/hero-bg-fiee.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -56,8 +56,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#inicio">
-                        <!-- Usamos la URL del logo que subiste -->
-                        <img class="h-16 w-auto" src="https://i.ibb.co/bK60Dvt/ANEIMERA-UNMSM-color-1.png" alt="Logo ANEIMERA UNMSM">
+                        <!-- RUTA RELATIVA DEL LOGO -->
+                        <img class="h-16 w-auto" src="assets/logo-aneimera-unmsm.png" alt="Logo ANEIMERA UNMSM">
                     </a>
                 </div>
                 <!-- Navegación Desktop -->
@@ -121,11 +121,12 @@
                     </p>
                     <p class="mt-4 text-lg text-gray-600">
                         Nuestra misión es complementar la formación académica de nuestros miembros, cerrando la brecha entre la universidad y la industria. Fomentamos el liderazgo, la innovación y la responsabilidad social.
-                    </p>
+                    </op>
                 </div>
                 <!-- Columna de Imagen -->
                 <div class="w-full h-auto rounded-lg overflow-hidden shadow-xl">
-                    <img src="https://i.ibb.co/F8C0c6R/image-014dc4.jpg" alt="Equipo ANEIMERA UNMSM en evento" class="w-full h-full object-cover">
+                    <!-- RUTA RELATIVA DE LA IMAGEN -->
+                    <img src="assets/quienes-somos-autoridades.jpg" alt="Equipo ANEIMERA UNMSM en evento" class="w-full h-full object-cover">
                 </div>
             </div>
         </section>
@@ -143,7 +144,8 @@
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Pilar 1: Eventos -->
                     <div class="pillar-card">
-                        <img src="https://i.ibb.co/CKP2c1j/coneimera-logo.jpg" alt="Logo CONEIMERA" class="w-full h-48 object-contain mb-4 bg-gray-100 rounded-md p-4">
+                        <!-- RUTA RELATIVA DE LA IMAGEN -->
+                        <img src="assets/pilar-coneimera.jpg" alt="Logo CONEIMERA" class="w-full h-48 object-contain mb-4 bg-gray-100 rounded-md p-4">
                         <h4 class="text-xl font-bold text-gray-900">Eventos y Congresos</h4>
                         <p class="mt-2 text-gray-600">
                             Organizamos y participamos en ponencias, talleres y congresos nacionales como el <strong>CONEIMERA</strong>, trayendo a expertos de la industria para complementar nuestra formación.
@@ -151,19 +153,21 @@
                     </div>
                     <!-- Pilar 2: Proyectos -->
                     <div class="pillar-card">
-                        <img src="https://fiee.unmsm.edu.pe/wp-content/uploads/2019/08/concurso-robotica.jpg" alt="Concurso de Robótica" class="w-full h-48 object-cover mb-4 rounded-md">
+                        <!-- RUTA RELATIVA DE LA IMAGEN -->
+                        <img src="assets/pilar-robotica.jpg" alt="Concurso de Robótica" class="w-full h-48 object-cover mb-4 rounded-md">
                         <h4 class="text-xl font-bold text-gray-900">Proyectos e Innovación</h4>
                         <p class="mt-2 text-gray-600">
                             Fomentamos la participación en concursos de robótica, eficiencia energética y automatización. Creamos espacios para que nuestros miembros desarrollen y prueben sus ideas.
-                        </p>
+                        </op>
                     </div>
                     <!-- Pilar 3: Investigación -->
                     <div class="pillar-card">
-                        <img src="https://i.ibb.co/422X8qj/fiee-laboratorio-unmsm.jpg" alt="Laboratorio de Investigación FIEE" class="w-full h-48 object-cover mb-4 rounded-md">
+                        <!-- RUTA RELATIVA DE LA IMAGEN -->
+                        <img src="assets/pilar-laboratorio.jpg" alt="Laboratorio de Investigación FIEE" class="w-full h-48 object-cover mb-4 rounded-md">
                         <h4 class="text-xl font-bold text-gray-900">Investigación y Academia</h4>
                         <p class="mt-2 text-gray-600">
                             Impulsamos círculos de estudio, publicamos *papers* y colaboramos con docentes de la FIEE para mantenernos a la vanguardia del conocimiento tecnológico.
-                        </p>
+                        </op>
                     </div>
                 </div>
             </div>
@@ -179,7 +183,7 @@
                     </h3>
                     <p class="mt-4 text-lg text-gray-600">
                         Invierta en el talento que su empresa necesitará mañana. Le ofrecemos un canal directo a los futuros ingenieros líderes de la UNMSM.
-                    </p>
+                    </op>
                 </div>
 
                 <div class="mt-20 grid md:grid-cols-2 gap-16 bg-gray-50 p-8 md:p-12 rounded-lg shadow-inner">
@@ -263,7 +267,7 @@
                     <h2 class="text-3xl md:text-4xl font-extrabold">Hablemos.</h2>
                     <p class="mt-4 text-lg text-gray-300">
                         Estamos listos para construir el futuro juntos. Contáctenos para explorar una alianza o resolver sus dudas.
-                    </p>
+                    </op>
                     <div class="mt-8 space-y-4">
                         <p class="text-lg text-gray-300 flex items-center">
                             <span class="w-6 mr-3 text-aneimera-red">📧</span>
@@ -271,7 +275,7 @@
                         </p>
                         <p class="text-lg text-gray-300 flex items-center">
                             <span class="w-6 mr-3 text-aneimera-red">▶</span>
-                            <a href="#" class="hover:underline">LinkedIn: /ANEIMERA-UNMSM</a>
+                            <a href="linkedin.com/company/aneimera-unmsm" class="hover:underline">LinkedIn: ANEIMERA UNMSM</a>
                         </p>
                     </div>
                 </div>
