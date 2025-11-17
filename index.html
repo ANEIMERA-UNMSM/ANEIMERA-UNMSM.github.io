@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANEIMERA UNMSM - Ingeniería y Liderazgo</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
+    <!-- Estilos Personalizados y Fuentes -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
         
@@ -15,32 +19,30 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Definiendo el rojo oficial de ANEIMERA */
+        /* --- Variables de Color ANEIMERA --- */
         .bg-aneimera-red { background-color: #D50000; }
         .text-aneimera-red { color: #D50000; }
         .border-aneimera-red { border-color: #D50000; }
         .hover\:bg-aneimera-red-dark:hover { background-color: #B00000; }
 
-        /* ESTILOS PARA EL CARRUSEL */
+        /* --- Estilos del Carrusel Hero --- */
         .hero-slide {
             background-size: cover;
             background-position: center;
             position: relative;
         }
-        /* ** AVISO: ¡Recuerda cambiar estas imágenes! **
-        ** Debes subir tus fotos a la carpeta 'assets' **
-        */
+        /* ** AVISO: Reemplaza estas URLs de marcador de posición por tus imágenes en 'assets' ** */
         .hero-slide-1 {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/000000/ffffff?text=FOTO+FIEE');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/hero-bg-fiee.jpg');
         }
         .hero-slide-2 {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/333333/ffffff?text=FOTO+EVENTO'); /* <- CAMBIA ESTO */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/hero-2');
         }
         .hero-slide-3 {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/555555/ffffff?text=FOTO+PROYECTO'); /* <- CAMBIA ESTO */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/hero-3.jpg');
         }
 
-        /* Estilo para los puntos de paginación de Swiper */
+        /* --- Estilos de Paginación de Swiper --- */
         .swiper-pagination-bullet {
             background-color: #fff;
             opacity: 0.7;
@@ -49,28 +51,30 @@
             background-color: #D50000; /* Color rojo ANEIMERA */
             opacity: 1;
         }
-        /* FIN ESTILOS CARRUSEL */
-
     </style>
 </head>
 <body class="bg-white text-gray-800">
 
+    <!-- =================================== -->
+    <!-- NAVEGACIÓN (HEADER) -->
+    <!-- =================================== -->
     <header id="header" class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-50 transition-all duration-300">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 
+                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#inicio">
-                        <!-- ** AVISO: Sube tu logo a 'assets' o reemplaza la URL ** -->
-                        <img class="h-16 w-auto" src="https://placehold.co/200x80/ffffff/D50000?text=ANEIMERA+UNMSM" alt="Logo ANEIMERA UNMSM"
-                        onerror="this.src='https://placehold.co/200x80/ffffff/D50000?text=ANEIMERA+UNMSM'; this.onerror=null;">
+                        <!-- ** AVISO: Reemplaza esta URL de marcador de posición por tu logo ** -->
+                        <img class="h-16 w-auto" src="assets/logo-aneimera-unmsm.png" alt="Logo ANEIMERA UNMSM"
+                        onerror="this.src='assets/logo-aneimera-unmsm.png'; this.onerror=null;">
                     </a>
                 </div>
                 
+                <!-- Menú de Escritorio -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-6">
                         <a href="#inicio" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
-                        <a href="#quienes-somos" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Quiénes Somos</a>
                         <a href="#eventos" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Eventos</a>
                         <a href="#proyectos" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Proyectos</a>
                         <a href="#investigaciones" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Investigaciones</a>
@@ -79,6 +83,7 @@
                     </div>
                 </div>
                 
+                <!-- Botón de Menú Móvil -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-aneimera-red focus:outline-none">
                         <span class="text-3xl">☰</span>
@@ -87,7 +92,7 @@
             </div>
         </nav>
 
-        <!-- Menu Movil -->
+        <!-- Panel de Menú Móvil -->
         <div id="mobile-menu" class="md:hidden hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#inicio" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
@@ -101,13 +106,16 @@
         </div>
     </header>
 
+    <!-- =================================== -->
+    <!-- CONTENIDO PRINCIPAL -->
+    <!-- =================================== -->
     <main>
 
         <!-- ============== -->
-        <!-- SECCIÓN INICIO -->
+        <!-- SECCIÓN HERO (INICIO) -->
         <!-- ============== -->
         <section id="inicio" class="h-screen">
-            <!-- Swiper -->
+            <!-- Contenedor de Swiper -->
             <div class="swiper hero-swiper h-full">
                 <div class="swiper-wrapper">
                     <!-- Slide 1 -->
@@ -153,17 +161,18 @@
                         </div>
                     </div>
                 </div>
-                <!-- Paginación de Swiper -->
+                <!-- Paginación (puntos) -->
                 <div class="swiper-pagination"></div>
             </div>
         </section>
 
         <!-- ================== -->
-        <!-- QUIÉNES SOMOS -->
+        <!-- SECCIÓN QUIÉNES SOMOS -->
         <!-- ================== -->
         <section id="quienes-somos" class="py-24 bg-white">
             <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
                 
+                <!-- Columna de Texto -->
                 <div>
                     <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Quiénes Somos</h2>
                     <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
@@ -177,19 +186,21 @@
                     </p>
                 </div>
                 
+                <!-- Columna de Imagen -->
                 <div class="w-full h-auto rounded-lg overflow-hidden shadow-xl">
-                    <!-- ** AVISO: Sube tu foto a 'assets' o reemplaza la URL ** -->
-                    <img src="https://placehold.co/600x400/cccccc/ffffff?text=FOTO+EQUIPO" alt="Equipo ANEIMERA UNMSM en evento" class="w-full h-full object-cover"
-                    onerror="this.src='https://placehold.co/600x400/cccccc/ffffff?text=FOTO+EQUIPO'; this.onerror=null;">
+                    <!-- ** AVISO: Reemplaza esta URL de marcador de posición por tu foto ** -->
+                    <img src="assets/quienes-somos-autoridades.jpg" alt="Equipo ANEIMERA UNMSM en evento" class="w-full h-full object-cover"
+                    onerror="assets/quienes-somos-autoridades.jpg'; this.onerror=null;">
                 </div>
             </div>
         </section>
 
         <!-- ================== -->
-        <!-- PILARES DE ACCIÓN -->
+        <!-- SECCIÓN PILARES -->
         <!-- ================== -->
         <section id="pilares" class="py-24 bg-gray-50">
             <div class="max-w-7xl mx-auto px-6">
+                <!-- Encabezado de Sección -->
                 <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Lo Que Hacemos</h2>
                     <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
@@ -197,45 +208,42 @@
                     </h3>
                 </div>
                 
+                <!-- Grilla de Pilares -->
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                     
                     <!-- Pilar 1: Eventos -->
-                    <!-- NOTA: Aquí se aplicaron las clases de 'pillar-card' directamente -->
                     <div id="eventos" class="bg-white p-6 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
                         <div class="h-48 overflow-hidden rounded-md bg-gray-100 mb-4">
-                            <!-- ** AVISO: Sube tu foto a 'assets' o reemplaza la URL ** -->
-                            <img src="https://placehold.co/400x300/eeeeee/D50000?text=CONEIMERA" alt="Logo CONEIMERA" class="w-full h-full object-contain p-4 transition-transform duration-300 hover:scale-110"
-                            onerror="this.src='https://placehold.co/400x300/eeeeee/D50000?text=CONEIMERA'; this.onerror=null;">
+                            <img src="assets/pilar-coneimera.jpg" alt="Logo CONEIMERA" class="w-full h-full object-contain p-4 transition-transform duration-300 hover:scale-110"
+                            onerror="this.src='assets/pilar-coneimera.jpg'; this.onerror=null;">
                         </div>
                         <h4 class="text-xl font-bold text-gray-900">Eventos y Congresos</h4>
                         <p class="mt-2 text-gray-600">
-                            Organizamos y participamos en ponencias, talleres y congresos nacionales como el <strong>CONEIMERA</strong>, trayendo a expertos de la industria para complementar nuestra formación.
+                            Organizamos y participamos en ponencias, talleres y congresos nacionales como el <strong>CONEIMERA</strong>, trayendo a expertos de la industria.
                         </p>
                     </div>
                     
                     <!-- Pilar 2: Proyectos -->
                     <div id="proyectos" class="bg-white p-6 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
                         <div class="h-48 overflow-hidden rounded-md mb-4">
-                            <!-- ** AVISO: Sube tu foto a 'assets' o reemplaza la URL ** -->
-                            <img src="https://placehold.co/400x300/cccccc/ffffff?text=ROBÓTICA" alt="Concurso de Robótica" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                            onerror="this.src='https://placehold.co/400x300/cccccc/ffffff?text=ROBÓTICA'; this.onerror=null;">
+                            <img src="assets/pilar-robotica.jpg" alt="Concurso de Robótica" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                            onerror="this.src='assets/pilar-robotica.jpg'; this.onerror=null;">
                         </div>
                         <h4 class="text-xl font-bold text-gray-900">Proyectos e Innovación</h4>
                         <p class="mt-2 text-gray-600">
-                            Fomentamos la participación en concursos de robótica, eficiencia energética y automatización. Creamos espacios para que nuestros miembros desarrollen y prueben sus ideas.
+                            Fomentamos la participación en concursos de robótica, eficiencia energética y automatización. Creamos espacios para desarrollar y probar ideas.
                         </p>
                     </div>
                     
                     <!-- Pilar 3: Investigaciones -->
                     <div id="investigaciones" class="bg-white p-6 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
                         <div class="h-48 overflow-hidden rounded-md mb-4">
-                            <!-- ** AVISO: Sube tu foto a 'assets' o reemplaza la URL ** -->
-                            <img src="https://placehold.co/400x300/aaaaaa/ffffff?text=LABORATORIO" alt="Laboratorio de Investigación FIEE" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                            onerror="this.src='https://placehold.co/400x300/aaaaaa/ffffff?text=LABORATORIO'; this.onerror=null;">
+                            <img src="assets/pilar-laboratorio.jpg" alt="Laboratorio de Investigación FIEE" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                            onerror="this.src='assets/pilar-laboratorio.jpg'; this.onerror=null;">
                         </div>
                         <h4 class="text-xl font-bold text-gray-900">Investigación y Academia</h4>
                         <p class="mt-2 text-gray-600">
-                            Impulsamos círculos de estudio, publicamos *papers* y colaboramos con docentes de la FIEE para mantenernos a la vanguardia del conocimiento tecnológico.
+                            Impulsamos círculos de estudio, publicamos *papers* y colaboramos con docentes de la FIEE para mantenernos a la vanguardia del conocimiento.
                         </p>
                     </div>
                 </div>
@@ -243,10 +251,11 @@
         </section>
 
         <!-- ================== -->
-        <!-- ALIANZAS -->
+        <!-- SECCIÓN ALIANZAS -->
         <!-- ================== -->
         <section id="alianzas" class="py-24 bg-white">
             <div class="max-w-7xl mx-auto px-6">
+                <!-- Encabezado de Sección -->
                 <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Para Empresas</h2>
                     <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
@@ -257,13 +266,13 @@
                     </p>
                 </div>
 
+                <!-- Contenido de Alianzas -->
                 <div class="mt-20 grid md:grid-cols-2 gap-16 bg-gray-50 p-8 md:p-12 rounded-lg shadow-inner">
                     
                     <!-- Columna: Qué Ofrecemos -->
                     <div>
                         <h4 class="text-2xl font-bold text-gray-900">¿Qué Ofrecemos a su Empresa?</h4>
                         <ul class="mt-6 space-y-4">
-                            <!-- NOTA: Aquí se aplicaron las clases de 'alliance-item' y 'alliance-icon' directamente -->
                             <li class="flex items-start space-x-3 mb-4">
                                 <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-sm font-bold bg-green-500">✓</span>
                                 <div>
@@ -334,12 +343,12 @@
         </section>
 
         <!-- ================== -->
-        <!-- CONTACTO -->
+        <!-- SECCIÓN CONTACTO -->
         <!-- ================== -->
         <section id="contacto" class="py-24 bg-gray-900 text-white">
             <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
                 
-                <!-- Columna de Información -->
+                <!-- Columna de Información de Contacto -->
                 <div>
                     <h2 class="text-3xl md:text-4xl font-extrabold">Hablemos.</h2>
                     <p class="mt-4 text-lg text-gray-300">
@@ -347,6 +356,7 @@
                     </p>
                     <div class="mt-8 space-y-4">
                         
+                        <!-- Email -->
                         <p class="text-lg text-gray-300 flex items-center">
                             <span class="w-6 mr-3 text-aneimera-red">
                                 <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884l7.997 4.19a.75.75 0 00.666 0l7.997-4.19A1.125 1.125 0 0017.5 4.75H2.5A1.125 1.125 0 002.003 5.884zM17.5 6.562l-7.997 4.19a.75.75 0 00-.666 0L1.003 6.562V15.25a1.125 1.125 0 001.125 1.125h14.75A1.125 1.125 0 0017.5 15.25V6.562z"></path></svg>
@@ -354,13 +364,16 @@
                             <a href="mailto:aneimera.sm@gmail.com" class="hover:underline">aneimera.sm@gmail.com</a>
                         </p>
                         
+                        <!-- LinkedIn -->
                         <p class="text-lg text-gray-300 flex items-center">
                             <span class="w-6 mr-3 text-gray-400">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+
                             </span>
                             <a href="https://www.linkedin.com/company/aneimera-unmsm" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn: ANEIMERA UNMSM</a>
                         </p>
                         
+                        <!-- Instagram -->
                         <p class="text-lg text-gray-300 flex items-center">
                             <span class="w-6 mr-3 text-gray-400">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.069-4.85.069s-3.584-.011-4.85-.069c-3.225-.149-4.771-1.664-4.919-4.919-.058-1.265-.069-1.644-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.058 1.281-.072 1.689-.072 4.947s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.947.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.947s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.44-.645 1.44-1.44-.645-1.44-1.44-1.44z" clip-rule="evenodd"/></svg>
@@ -370,7 +383,7 @@
                     </div>
                 </div>
                 
-                <!-- Columna de Formulario -->
+                <!-- Columna de Formulario de Contacto -->
                 <form action="#" method="POST" class="w-full">
                     <div class="grid grid-cols-1 gap-y-6">
                         <div>
@@ -400,6 +413,9 @@
         </section>
     </main>
 
+    <!-- =================================== -->
+    <!-- FOOTER (PIE DE PÁGINA) -->
+    <!-- =================================== -->
     <footer class="bg-gray-950">
         <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-base text-gray-500">
@@ -408,20 +424,24 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE SWIPER -->
+    <!-- =================================== -->
+    <!-- SCRIPTS -->
+    <!-- =================================== -->
+    
+    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- SCRIPT PRINCIPAL -->
+    <!-- Script Principal de la Página -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Constantes del DOM ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const header = document.getElementById('header');
         const headerHeight = header.offsetHeight;
 
-        // INICIALIZACIÓN DE SWIPER
+        // --- INICIALIZACIÓN DE SWIPER ---
         const swiper = new Swiper('.hero-swiper', {
-            // Opciones
             direction: 'horizontal',
             loop: true,
             effect: 'fade', // Efecto de desvanecimiento
@@ -432,20 +452,18 @@
                 delay: 5000, // 5 segundos
                 disableOnInteraction: false,
             },
-            
-            // Paginación (puntos)
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
         });
 
-        // Toggle Menú Móvil
+        // --- LÓGICA DEL MENÚ MÓVIL ---
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Lógica de Scroll Suave
+        // --- LÓGICA DE SCROLL SUAVE ---
         const navLinks = document.querySelectorAll('a[href^="#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -454,7 +472,7 @@
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    // Ajuste para el scroll con offset
+                    // Calcula la posición de destino con un offset para el header fijo
                     const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 20; 
                     
                     window.scrollTo({
@@ -463,7 +481,7 @@
                     });
                 }
                 
-                // Ocultar menú móvil después de hacer clic
+                // Cierra el menú móvil automáticamente al hacer clic en un enlace
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                 }
