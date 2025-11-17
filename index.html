@@ -1,360 +1,427 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANEIMERA UNMSM - Ingeniería y Liderazgo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANEIMERA UNMSM - Ingeniería y Liderazgo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-        /* Definiendo el rojo oficial de ANEIMERA como clases de Tailwind */
-        .bg-aneimera-red {
-            background-color: #D50000; /* Un rojo fuerte y limpio, similar al del logo */
-        }
-        .text-aneimera-red {
-            color: #D50000;
-        }
-        .border-aneimera-red {
-            border-color: #D50000;
-        }
-        .hover\:bg-aneimera-red-dark:hover {
-            background-color: #B00000; /* Un rojo más oscuro para el hover */
-        }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
-        /* Estilo para el fondo del Hero - AHORA USA RUTA RELATIVA */
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/hero-bg-fiee.jpg');
-            background-size: cover;
-            background-position: center;
-        }
+        /* Definiendo el rojo oficial de ANEIMERA */
+        .bg-aneimera-red { background-color: #D50000; }
+        .text-aneimera-red { color: #D50000; }
+        .border-aneimera-red { border-color: #D50000; }
+        .hover\:bg-aneimera-red-dark:hover { background-color: #B00000; }
 
-        /* Estilo para las tarjetas de pilares */
-        .pillar-card {
-            @apply bg-white p-6 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105;
-        }
+        /* ESTILOS PARA EL CARRUSEL AÑADIDOS */
+        .hero-slide {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        /* Aquí asignas tus imágenes */
+        .hero-slide-1 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/hero-bg-fiee.jpg');
+        }
+        .hero-slide-2 {
+            /* AVISO: Cambia esta imagen de ejemplo */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/hero-2.jpg');
+        }
+        .hero-slide-3 {
+            /* AVISO: Cambia esta imagen de ejemplo */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/hero-3.jpg');
+        }
 
-        /* Estilo para los items de listas de alianzas */
-        .alliance-item {
-            @apply flex items-start space-x-3 mb-4;
-        }
-        .alliance-icon {
-            @apply flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-sm font-bold;
-        }
-    </style>
+        /* Estilo para los puntos de paginación de Swiper */
+        .swiper-pagination-bullet {
+            background-color: #fff;
+            opacity: 0.7;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #D50000; /* Color rojo ANEIMERA */
+            opacity: 1;
+        }
+        /* FIN ESTILOS CARRUSEL */
+
+        /* Estilo para las tarjetas de pilares */
+        .pillar-card {
+            @apply bg-white p-6 rounded-lg shadow-lg overflow-hidden transition-transform duration-300;
+        }
+
+        /* Estilo para los items de listas de alianzas */
+        .alliance-item {
+            @apply flex items-start space-x-3 mb-4;
+        }
+        .alliance-icon {
+            @apply flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-sm font-bold;
+        }
+    </style>
 </head>
 <body class="bg-white text-gray-800">
 
-    <!-- Header (Encabezado Fijo) -->
-    <header id="header" class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-50 transition-all duration-300">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#inicio">
-                        <!-- RUTA RELATIVA DEL LOGO -->
-                        <img class="h-16 w-auto" src="assets/logo-aneimera-unmsm.png" alt="Logo ANEIMERA UNMSM">
-                    </a>
-                </div>
-                <!-- Navegación Desktop -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="#inicio" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
-                        <a href="#quienes-somos" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Quiénes Somos</a>
-                        <a href="#pilares" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Nuestros Pilares</a>
-                        <a href="#alianzas" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Alianzas Estratégicas</a>
-                        <a href="#contacto" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Contacto</a>
-                    </div>
-                </div>
-                <!-- Botón Menú Móvil -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-aneimera-red focus:outline-none">
-                        <span class="text-3xl">☰</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-        <!-- Menú Móvil -->
-        <div id="mobile-menu" class="md:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#inicio" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
-                <a href="#quienes-somos" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Quiénes Somos</a>
-                <a href="#pilares" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Nuestros Pilares</a>
-                <a href="#alianzas" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Alianzas Estratégicas</a>
-                <a href="#contacto" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
-            </div>
-        </div>
-    </header>
+        <header id="header" class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-50 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                                <div class="flex-shrink-0 flex items-center">
+                    <a href="#inicio">
+                        <img class="h-16 w-auto" src="assets/logo-aneimera-unmsm.png" alt="Logo ANEIMERA UNMSM">
+                    </a>
+                </div>
+                                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#inicio" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
+                        <a href="#quienes-somos" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Quiénes Somos</a>
+                        <a href="#eventos" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Eventos</a>
+                        <a href="#proyectos" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Proyectos</a>
+                        <a href="#investigaciones" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Investigaciones</a>
+                        <a href="#alianzas" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Alianzas Estratégicas</a>
+                        <a href="#contacto" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Contacto</a>
+                    </div>
+                </div>
+                                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-aneimera-red focus:outline-none">
+                        <span class="text-3xl">☰</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+                <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#inicio" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="#quienes-somos" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Quiénes Somos</a>
+                <a href="#eventos" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Eventos</a>
+read           <a href="#proyectos" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Proyectos</a>
+                <a href="#investigaciones" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Investigaciones</a>
+                <a href="#alianzas" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Alianzas Estratégicas</a>
+                <a href="#contacto" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+            </div>
+        </div>
+    </header>
 
-    <main>
+    <main>
 
-        <!-- 1. Sección Inicio (Hero) -->
-        <section id="inicio" class="h-screen flex items-center justify-center hero-bg">
-            <div class="relative z-10 text-center text-white p-6 max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-                    ANEIMERA UNMSM
-                </h1>
-                <p class="mt-4 text-xl md:text-3xl font-medium">
-                    Conectando a los futuros líderes de la ingeniería con la industria.
-                </p>
-                <a href="#alianzas" class="mt-10 inline-block bg-aneimera-red text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-aneimera-red-dark transition-colors shadow-lg">
-                    Conviértase en Aliado
-                </a>
-            </div>
-        </section>
+                <section id="inicio" class="h-screen">
+                        <div class="swiper hero-swiper h-full">
+                <div class="swiper-wrapper">
+                                        <div class="swiper-slide hero-slide hero-slide-1 flex items-center justify-center">
+                        <div class="relative z-10 text-center text-white p-6 max-w-4xl mx-auto">
+                            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+                                ANEIMERA UNMSM
+                            </h1>
+                            <p class="mt-4 text-xl md:text-3xl font-medium">
+                                Conectando a los futuros líderes de la ingeniería con la industria.
+        _                     <a href="#alianzas" class="mt-10 inline-block bg-aneimera-red text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-aneimera-red-dark transition-colors shadow-lg">
+                                    Conviértase en Aliado
+                            </a>
+                        </div>
+                    </div>
+                                        <div class="swiper-slide hero-slide hero-slide-2 flex items-center justify-center">
+                        <div class="relative z-10 text-center text-white p-6 max-w-4xl mx-auto">
+                            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+                                Eventos y Congresos
+                            </h1>
+                            <p class="mt-4 text-xl md:text-3xl font-medium">
+                                Participamos y organizamos ponencias de alto nivel.
+                            </p>
+                            <a href="#eventos" class="mt-10 inline-block bg-aneimera-red text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-aneimera-red-dark transition-colors shadow-lg">
+                                Ver Eventos
+                            </a>
+                        </div>
+                    </div>
+                                        <div class="swiper-slide hero-slide hero-slide-3 flex items-center justify-center">
+                        <div class="relative z-10 text-center text-white p-6 max-w-4xl mx-auto">
+file                         <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+                                Innovación y Proyectos
+                            </h1>
+                            <p class="mt-4 text-xl md:text-3xl font-medium">
+                                Fomentamos la creación de tecnología en nuestros miembros.
+                            </p>
+                            <a href="#proyectos" class="mt-10 inline-block bg-aneimera-red text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-aneimera-red-dark transition-colors shadow-lg">
+                                Ver Proyectos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                                <div class="swiper-pagination"></div>
+            </div>
+        </section>
 
-        <!-- 2. Sección Quiénes Somos -->
-        <section id="quienes-somos" class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-                <!-- Columna de Texto -->
-                <div>
-                    <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Quiénes Somos</h2>
-                    <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
-                        Una nueva generación de ingenieros
-                    </h3>
-                    <p class="mt-6 text-lg text-gray-600">
-                        Somos la <strong>Asociación Nacional de Estudiantes de Ingeniería Mecánica, Eléctrica, Electrónica y Ramas Afines</strong> de la Universidad Nacional Mayor de San Marcos (UNMSM).
-                    </p>
-                    <p class="mt-4 text-lg text-gray-600">
-                        Nuestra misión es complementar la formación académica de nuestros miembros, cerrando la brecha entre la universidad y la industria. Fomentamos el liderazgo, la innovación y la responsabilidad social.
-                    </op>
-                </div>
-                <!-- Columna de Imagen -->
-                <div class="w-full h-auto rounded-lg overflow-hidden shadow-xl">
-                    <!-- RUTA RELATIVA DE LA IMAGEN -->
-                    <img src="assets/quienes-somos-autoridades.jpg" alt="Equipo ANEIMERA UNMSM en evento" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </section>
+                <section id="quienes-somos" class="py-24 bg-white">
+Read-only output           <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                                <div>
+                    <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Quiénes Somos</h2>
+                    <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
+                        Una nueva generación de ingenieros
+                    </h3>
+                    <p class="mt-6 text-lg text-gray-600">
+                        Somos la <strong>Asociación Nacional de Estudiantes de Ingeniería Mecánica, Eléctrica, Electrónica y Ramas Afines</strong> de la Universidad Nacional Mayor de San Marcos (UNMSM).
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600">
+Click to enable editing                       Nuestra misión es complementar la formación académica de nuestros miembros, cerrando la brecha entre la universidad y la industria. Fomentamos el liderazgo, la innovación y la responsabilidad social.
+                    </op>
+                </div>
+                                <div class="w-full h-auto rounded-lg overflow-hidden shadow-xl">
+                    <img src="assets/quienes-somos-autoridades.jpg" alt="Equipo ANEIMERA UNMSM en evento" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
 
-        <!-- 3. Sección Nuestros Pilares -->
-        <section id="pilares" class="py-24 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Lo Que Hacemos</h2>
-                    <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
-                        Nuestros Pilares de Acción
-                    </h3>
-                </div>
+                <section id="pilares" class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Lo Que Hacemos</h2>
+                    <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
+                        Nuestros Pilares de Acción
+                    </h3>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                                        <div id="eventos" class="pillar-card">
+                        <div class="h-48 overflow-hidden rounded-md bg-gray-100 mb-4">
+                            <img src="assets/pilarr-coneimera.jpg" alt="Logo CONEIMERA" class="w-full h-full object-contain p-4 transition-transform duration-300 hover:scale-110">
+A                     </div>
+                        <h4 class="text-xl font-bold text-gray-900">Eventos y Congresos</h4>
+                        <p class="mt-2 text-gray-600">
+                            Organizamos y participamos en ponencias, talleres y congresos nacionales como el <strong>CONEIMERA</strong>, trayendo a expertos de la industria para complementar nuestra formación.
+                        </p>
+                    </div>
+                                        <div id="proyectos" class="pillar-card">
+                        <div class="h-48 overflow-hidden rounded-md mb-4">
+                            <img src="assets/pilar-robotica.jpg" alt="Concurso de Robótica" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+this file               </div>
+                        <h4 class="text-xl font-bold text-gray-900">Proyectos e Innovación</h4>
+A                     <p class="mt-2 text-gray-600">
+                            Fomentamos la participación en concursos de robótica, eficiencia energética y automatización. Creamos espacios para que nuestros miembros desarrollen y prueben sus ideas.
+            _           </op>
+                    </div>
+                                        <div id="investigaciones" class="pillar-card">
+                        <div class="h-48 overflow-hidden rounded-md mb-4">
+                            <img src="assets/pilar-laboratorio.jpg" alt="Laboratorio de Investigación FIEE" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+source               </div>
+                        <h4 class="text-xl font-bold text-gray-900">Investigación y Academia</h4>
+                        <p class="mt-2 text-gray-600">
+                            Impulsamos círculos de estudio, publicamos *papers* y colaboramos con docentes de la FIEE para mantenernos a la vanguardia del conocimiento tecnológico.
+code                   </op>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <section id="alianzas" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Para Empresas</h2>
+                    <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
+                        Conviértase en Socio Estratégico
+                    </h3>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Invierta en el talento que su empresa necesitará mañana. Le ofrecemos un canal directo a los futuros ingenieros líderes de la UNMSM.
+                    </op>
+                </div>
+
+                <div class="mt-20 grid md:grid-cols-2 gap-16 bg-gray-50 p-8 md:p-12 rounded-lg shadow-inner">
+                                        <div>
+                        <h4 class="text-2xl font-bold text-gray-900">¿Qué Ofrecemos a su Empresa?</h4>
+                        <ul class="mt-6 space-y-4">
+                            <li class="alliance-item">
+                                <span class="alliance-icon bg-green-500">✓</span>
+                                <div>
+                                    <h5 class="font-semibold">Acceso al Mejor Talento</h5>
+                                    <p class="text-gray-600">Canal directo para sus programas de prácticas, *trainee* y reclutamiento.</p>
+                                </div>
+                            </li>
+                            <li class="alliance-item">
+                                <span class="alliance-icon bg-green-500">✓</span>
+A                             <div>
+                                    <h5 class="font-semibold">Marca Empleadora (Employer Branding)</h5>
+                                    <p class="text-gray-600">Posicione su marca como empleador #1 dentro de la FIEE-UNMSM.</p>
+type                         </div>
+            _             </li>
+                            <li class="alliance-item">
+                                <span class="alliance-icon bg-green-500">✓</span>
+                                <div>
+                                    <h5 class="font-semibold">Soluciones de Innovación</h5>
+s                                 <p class="text-gray-600">Plantee retos reales de su industria y reciba soluciones frescas de nuestros equipos.</p>
+                                </div>
+                            </li>
+                             <li class="alliance-item">
+                                <span class="alliance-icon bg-green-500">✓</span>
+                                <div>
+                                    <h5 class="font-semibold">Visibilidad Corporativa</h5>
+                                    <p class="text-gray-600">Presencia de marca en todos nuestros eventos, congresos (CONEIMERA) y redes sociales.</p>
+A                           </div>
+                            </li>
+tracert                 </ul>
+                    </div>
+                                        <div>
+                      A <h4 class="text-2xl font-bold text-gray-900">¿Cómo Puede Colaborar?</h4>
+                        <ul class="mt-6 space-y-4">
+                            <li class="alliance-item">
+                                <span class="alliance-icon bg-aneimera-red">►</span>
+                                <div>
+                                    <h5 class="font-semibold">Mentoría y Expertise</h5>
+                                    <p class="text-gray-600">A través de charlas técnicas, talleres y mentorías de sus líderes.</p>
+A                           </div>
+                            </li>
+                            <li class="alliance-item">
+                                <span class="alliance-icon bg-aneimera-red">►</span>
+_                             <div>
+                                A   <h5 class="font-semibold">Oportunidades Reales</h5>
+                                    <p class="text-gray-600">Ofreciendo visitas técnicas guiadas a sus plantas e instalaciones.</p>
+                                </div>
+                        A   </li>
+                            <li class="alliance-item">
+                                <span class="alliance-icon bg-aneimera-red">►</span>
+                                <div>
+                                    <h5 class="font-semibold">Apoyo a Eventos</h5>
+S                                 <p class="text-gray-600">Patrocinio (económico o logístico) para nuestros congresos y semanas de ingeniería.</p>
+                                </div>
+                            </li>
+Â                         <li class="alliance-item">
+                    _         <span class="alliance-icon bg-aneimera-red">►</span>
+                                <div>
+                                    <h5 class="font-semibold">Programas de Prácticas</h5>
+A                                 <p class="text-gray-600">Un sistema formalizado de pasantías para nuestros miembros destacados.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <section id="contacto" class="py-24 bg-gray-900 text-white">
+Read-only output           <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold">Hablemos.</h2>
+                    <p class="mt-4 text-lg text-gray-300">
+                        Estamos listos para construir el futuro juntos. Contáctenos para explorar una alianza o resolver sus dudas.
+                    </op>
+                    <div class="mt-8 space-y-4">
+                                                <p class="text-lg text-gray-300 flex items-center">
+                            <span class="w-6 mr-3 text-aneimera-red">
+                                <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884l7.997 4.19a.75.75 0 00.666 0l7.997-4.19A1.125 1.125 0 0017.5 4.75H2.5A1.125 1.125 0 002.003 5.884zM17.5 6.562l-7.997 4.19a.75.75 0 00-.666 0L1.003 6.562V15.25a1.125 1.125 0 001.125 1.125h14.75A1.125 1.125 0 0017.5 15.25V6.562z"></path></svg>
+                            </span>
+                            <a href="mailto:aneimera.sm@gmail.com" class="hover:underline">aneimera.sm@gmail.com</a>
+Click to enable editing                     </p>
+                                                <p class="text-lg text-gray-300 flex items-center">
+                            <span class="w-6 mr-3 text-gray-400">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                            </span>
+                            <a href="https://www.linkedin.com/company/aneimera-unmsm" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn: ANEIMERA UNMSM</a>
+                        </p>
+                                                <p class="text-lg text-gray-300 flex items-center">
+                            <span class="w-6 mr-3 text-gray-400">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.069-4.85.069s-3.584-.011-4.85-.069c-3.225-.149-4.771-1.664-4.919-4.919-.058-1.265-.069-1.644-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.058 1.281-.072 1.689-.072 4.947s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.947.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.947s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.44-.645 1.44-1.44-.645-1.44-1.44-1.44z" clip-rule="evenodd"/></svg>
+                            </span>
+                            <a href="https://www.instagram.com/aneimera_unmsm" target="_blank" rel="noopener noreferrer" class="hover:underline">Instagram: @aneimera_unmsm</a>
+                        </p>
+                    </div>
+  M             </div>
+                                <form action="#" method="POST" class="w-full">
+                    <div class="grid grid-cols-1 gap-y-6">
+                        <div>
+                            <label for="nombre" class="sr-only">Nombre Completo</label>
+                            <input type="text" name="nombre" id="nombre" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:ring-aneimera-red focus:border-aneimera-red" placeholder="Nombre Completo" required>
+                        </div>
+                        <div>
+                            <label for="empresa" class="sr-only">Empresa</label>
+                            <input type="text" name="empresa" id="empresa" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:ring-aneimera-red focus:border-aneimera-red" placeholder="Nombre de la Empresa" required>
+                        </div>
+                        <div>
+                            <label for="email" class="sr-only">Email</label>
+A                         <input id="email" name="email" type="email" autocomplete="email" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:ring-aneimera-red focus:border-aneimera-red" placeholder="Email Corporativo" required>
+section                   </div>
+                        <div>
+                            <label for="mensaje" class="sr-only">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="4" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:ring-aneimera-red focus:border-aneimera-red" placeholder="Su mensaje..." required></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-aneimera-red hover:bg-aneimera-red-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-aneimera-red transition-colors">
+                                Enviar Propuesta
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+        <footer class="bg-gray-950">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+Next           <p class="text-base text-gray-500">
+                &copy; 2025 ANEIMERA UNMSM. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const header = document.getElementById('header');
+            const headerHeight = header.offsetHeight;
+
+            // 3. INICIALIZACIÓN DE SWIPER AÑADIDA
+            const swiper = new Swiper('.hero-swiper', {
+                // Opciones
+                direction: 'horizontal',
+                loop: true,
+                effect: 'fade', // Efecto de desvanecimiento
+                fadeEffect: {
+                    crossFade: true
+                },
+                autoplay: {
+                    delay: 5000, // 5 segundos
+                    disableOnInteraction: false,
+                },
                 
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Pilar 1: Eventos -->
-                    <div class="pillar-card">
-                        <!-- RUTA RELATIVA DE LA IMAGEN -->
-                        <img src="assets/pilarr-coneimera.jpg" alt="Logo CONEIMERA" class="w-full h-48 object-contain mb-4 bg-gray-100 rounded-md p-4">
-                        <h4 class="text-xl font-bold text-gray-900">Eventos y Congresos</h4>
-                        <p class="mt-2 text-gray-600">
-                            Organizamos y participamos en ponencias, talleres y congresos nacionales como el <strong>CONEIMERA</strong>, trayendo a expertos de la industria para complementar nuestra formación.
-                        </p>
-                    </div>
-                    <!-- Pilar 2: Proyectos -->
-                    <div class="pillar-card">
-                        <!-- RUTA RELATIVA DE LA IMAGEN -->
-                        <img src="assets/pilar-robotica.jpg" alt="Concurso de Robótica" class="w-full h-48 object-cover mb-4 rounded-md">
-                        <h4 class="text-xl font-bold text-gray-900">Proyectos e Innovación</h4>
-                        <p class="mt-2 text-gray-600">
-                            Fomentamos la participación en concursos de robótica, eficiencia energética y automatización. Creamos espacios para que nuestros miembros desarrollen y prueben sus ideas.
-                        </op>
-                    </div>
-                    <!-- Pilar 3: Investigación -->
-                    <div class="pillar-card">
-                        <!-- RUTA RELATIVA DE LA IMAGEN -->
-                        <img src="assets/pilar-laboratorio.jpg" alt="Laboratorio de Investigación FIEE" class="w-full h-48 object-cover mb-4 rounded-md">
-                        <h4 class="text-xl font-bold text-gray-900">Investigación y Academia</h4>
-                        <p class="mt-2 text-gray-600">
-                            Impulsamos círculos de estudio, publicamos *papers* y colaboramos con docentes de la FIEE para mantenernos a la vanguardia del conocimiento tecnológico.
-                        </op>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. Sección Alianzas Estratégicas -->
-        <section id="alianzas" class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Para Empresas</h2>
-                    <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
-                        Conviértase en Socio Estratégico
-                    </h3>
-                    <p class="mt-4 text-lg text-gray-600">
-                        Invierta en el talento que su empresa necesitará mañana. Le ofrecemos un canal directo a los futuros ingenieros líderes de la UNMSM.
-                    </op>
-                </div>
-
-                <div class="mt-20 grid md:grid-cols-2 gap-16 bg-gray-50 p-8 md:p-12 rounded-lg shadow-inner">
-                    <!-- Columna 1: Lo que su Empresa Gana -->
-                    <div>
-                        <h4 class="text-2xl font-bold text-gray-900">¿Qué Ofrecemos a su Empresa?</h4>
-                        <ul class="mt-6 space-y-4">
-                            <li class="alliance-item">
-                                <span class="alliance-icon bg-green-500">✓</span>
-                                <div>
-                                    <h5 class="font-semibold">Acceso al Mejor Talento</h5>
-                                    <p class="text-gray-600">Canal directo para sus programas de prácticas, *trainee* y reclutamiento.</p>
-                                </div>
-                            </li>
-                            <li class="alliance-item">
-                                <span class="alliance-icon bg-green-500">✓</span>
-                                <div>
-                                    <h5 class="font-semibold">Marca Empleadora (Employer Branding)</h5>
-                                    <p class="text-gray-600">Posicione su marca como empleador #1 dentro de la FIEE-UNMSM.</p>
-                                </div>
-                            </li>
-                            <li class="alliance-item">
-                                <span class="alliance-icon bg-green-500">✓</span>
-                                <div>
-                                    <h5 class="font-semibold">Soluciones de Innovación</h5>
-                                    <p class="text-gray-600">Plantee retos reales de su industria y reciba soluciones frescas de nuestros equipos.</p>
-                                </div>
-                            </li>
-                             <li class="alliance-item">
-                                <span class="alliance-icon bg-green-500">✓</span>
-                                <div>
-                                    <h5 class="font-semibold">Visibilidad Corporativa</h5>
-                                    <p class="text-gray-600">Presencia de marca en todos nuestros eventos, congresos (CONEIMERA) y redes sociales.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Columna 2: Lo que Buscamos -->
-                    <div>
-                        <h4 class="text-2xl font-bold text-gray-900">¿Cómo Puede Colaborar?</h4>
-                        <ul class="mt-6 space-y-4">
-                            <li class="alliance-item">
-                                <span class="alliance-icon bg-aneimera-red">►</span>
-                                <div>
-                                    <h5 class="font-semibold">Mentoría y Expertise</h5>
-                                    <p class="text-gray-600">A través de charlas técnicas, talleres y mentorías de sus líderes.</p>
-                                </div>
-                            </li>
-                            <li class="alliance-item">
-                                <span class="alliance-icon bg-aneimera-red">►</span>
-                                <div>
-                                    <h5 class="font-semibold">Oportunidades Reales</h5>
-                                    <p class="text-gray-600">Ofreciendo visitas técnicas guiadas a sus plantas e instalaciones.</p>
-                                </div>
-                            </li>
-                            <li class="alliance-item">
-                                <span class="alliance-icon bg-aneimera-red">►</span>
-                                <div>
-                                    <h5 class="font-semibold">Apoyo a Eventos</h5>
-                                    <p class="text-gray-600">Patrocinio (económico o logístico) para nuestros congresos y semanas de ingeniería.</p>
-                                </div>
-                            </li>
-                            <li class="alliance-item">
-                                <span class="alliance-icon bg-aneimera-red">►</span>
-                                <div>
-                                    <h5 class="font-semibold">Programas de Prácticas</h5>
-                                    <p class="text-gray-600">Un sistema formalizado de pasantías para nuestros miembros destacados.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. Sección Contacto -->
-        <section id="contacto" class="py-24 bg-gray-900 text-white">
-            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-                <!-- Columna de Texto -->
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-extrabold">Hablemos.</h2>
-                    <p class="mt-4 text-lg text-gray-300">
-                        Estamos listos para construir el futuro juntos. Contáctenos para explorar una alianza o resolver sus dudas.
-                    </op>
-                    <div class="mt-8 space-y-4">
-                        <p class="text-lg text-gray-300 flex items-center">
-                            <span class="w-6 mr-3 text-aneimera-red">📧</span>
-                            <a href="mailto:alianzas@aneimeraunmsm.pe" class="hover:underline">aneimera.sm@gmail.com</a>
-                        </p>
-                        <p class="text-lg text-gray-300 flex items-center">
-                            <span class="w-6 mr-3 text-aneimera-red">▶</span>
-                            <a href="linkedin.com/company/aneimera-unmsm" class="hover:underline">LinkedIn: ANEIMERA UNMSM</a>
-                        </p>
-                    </div>
-                </div>
-                <!-- Columna de Formulario -->
-                <form action="#" method="POST" class="w-full">
-                    <div class="grid grid-cols-1 gap-y-6">
-                        <div>
-                            <label for="nombre" class="sr-only">Nombre Completo</label>
-                            <input type="text" name="nombre" id="nombre" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:ring-aneimera-red focus:border-aneimera-red" placeholder="Nombre Completo" required>
-                        </div>
-                        <div>
-                            <label for="empresa" class="sr-only">Empresa</label>
-                            <input type="text" name="empresa" id="empresa" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:ring-aneimera-red focus:border-aneimera-red" placeholder="Nombre de la Empresa" required>
-                        </div>
-                        <div>
-                            <label for="email" class="sr-only">Email</label>
-                            <input id="email" name="email" type="email" autocomplete="email" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:ring-aneimera-red focus:border-aneimera-red" placeholder="Email Corporativo" required>
-                        </div>
-                        <div>
-                            <label for="mensaje" class="sr-only">Mensaje</label>
-                            <textarea id="mensaje" name="mensaje" rows="4" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:ring-aneimera-red focus:border-aneimera-red" placeholder="Su mensaje..." required></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-aneimera-red hover:bg-aneimera-red-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-aneimera-red transition-colors">
-                                Enviar Propuesta
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-950">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-base text-gray-500">
-                &copy; 2025 ANEIMERA UNMSM. Todos los derechos reservados.
-            </p>
-        </div>
-    </footer>
-
-    <!-- Script para Navegación Móvil y Scroll Suave -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const header = document.getElementById('header');
-            const headerHeight = header.offsetHeight;
-
-            // Toggle Menú Móvil
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                // Paginación (puntos)
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
             });
 
-            // Lógica de Scroll Suave
-            const navLinks = document.querySelectorAll('a[href^="#"]');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                    // Ocultar menú móvil después de hacer clic
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
-            });
-        });
-    </script>
+            // Toggle Menú Móvil
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Lógica de Scroll Suave
+Next           const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+m                   e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 20; // Offset de 20px
+                        
+open                     window.scrollTo({
+s                           top: targetPosition,
+                            behavior: 'smooth'
+s                     });
+                    }
+                    // Ocultar menú móvil después de hacer clic
+CV               if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
