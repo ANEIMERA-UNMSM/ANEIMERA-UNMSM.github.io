@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos - ANEIMERA UNMSM</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Estilos Personalizados y Fuentes -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* --- Variables de Color ANEIMERA --- */
+        .bg-aneimera-red { background-color: #D50000; }
+        .text-aneimera-red { color: #D50000; }
+        .border-aneimera-red { border-color: #D50000; }
+        .hover\:bg-aneimera-red-dark:hover { background-color: #B00000; }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- =================================== -->
+    <!-- NAVEGACIÓN (HEADER) -->
+    <!-- =================================== -->
+    <header id="header" class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-50 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html"> <!-- Enlace a la página principal -->
+                        <img class="h-16 w-auto" src="assets/logo-aneimera-unmsm.png" alt="Logo ANEIMERA UNMSM"
+                        onerror="this.src='https://placehold.co/200x80/ffffff/D50000?text=LOGO'; this.onerror=null;">
+                    </a>
+                </div>
+                
+                <!-- Menú de Escritorio -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="index.html" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
+                        <a href="eventos.html" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Eventos</a>
+                        <a href="proyectos.html" class="text-aneimera-red font-bold px-3 py-2 rounded-md text-sm font-medium transition-colors">Proyectos</a> <!-- Enlace activo -->
+                        <a href="investigaciones.html" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Investigaciones</a>
+                        <a href="index.html#contacto" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Contacto</a>
+                    </div>
+                </div>
+                
+                <!-- Botón de Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-aneimera-red focus:outline-none">
+                        <span class="text-3xl">☰</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Panel de Menú Móvil -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="eventos.html" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Eventos</a>
+                <a href="proyectos.html" class="text-aneimera-red font-bold block px-3 py-2 rounded-md text-base font-medium">Proyectos</a> <!-- Enlace activo -->
+                <a href="investigaciones.html" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Investigaciones</a>
+                <a href="index.html#contacto" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- =================================== -->
+    <!-- CONTENIDO PRINCIPAL DE PROYECTOS -->
+    <!-- =================================== -->
+    <main class="pt-20"> <!-- Añade padding-top para compensar el header fijo -->
+
+        <!-- Encabezado de la Página -->
+        <section class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Nuestros Pilares</h2>
+                <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
+                    Proyectos e Innovación
+                </h3>
+                <p class="mt-6 text-lg text-gray-600">
+                    Fomentamos la participación en concursos de robótica, eficiencia energética y automatización. Creamos espacios para que nuestros miembros desarrollen y prueben sus ideas.
+                </p>
+            </div>
+        </section>
+
+        <!-- Lista de Proyectos -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                
+                <!-- Proyecto Destacado (Ejemplo) -->
+                <h4 class="text-2xl font-bold text-gray-900 mb-6">Proyecto Destacado</h4>
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden md:flex">
+                    <div class="md:w-1/2">
+                        <img src="assets/pilar-robotica.jpg" alt="Concurso de Robótica" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h5 class="text-2xl font-bold text-gray-900">Equipo de Robótica UNMSM</h5>
+                        <p class="text-sm text-gray-500 mb-2">Competencia Inter-Universitaria 2024</p>
+                        <p class="text-gray-600 mt-4">
+                            Nuestro equipo obtuvo el 2do lugar en la competencia nacional de robótica, diseñando y construyendo un robot seguidor de línea con evasión de obstáculos.
+                        </p>
+                        <p class="text-gray-600 mt-2">
+                            <strong>Tecnologías usadas:</strong> Arduino, Sensores Infrarrojos, Impresión 3D, C++.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Galería de Proyectos (Ejemplo) -->
+                <h4 class="text-2xl font-bold text-gray-900 mb-6 mt-16">Otros Proyectos</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Tarjeta de Proyecto 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/400x300/eeeeee/333333?text=Proyecto+Eficiencia" alt="Proyecto Eficiencia" class="w-full h-48 object-cover rounded-md bg-gray-100 mb-4">
+                        <h5 class="text-xl font-bold text-gray-900">Eficiencia Energética FIEE</h5>
+                        <p class="text-sm text-gray-500 mb-2">2023</p>
+                        <p class="text-gray-600">Análisis y propuesta de mejora para la reducción del consumo energético en los laboratorios de la facultad.</p>
+                    </div>
+                    
+                    <!-- Tarjeta de Proyecto 2 (Placeholder) -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/400x300/dddddd/333333?text=Automatización" alt="Automatización" class="w-full h-48 object-cover rounded-md bg-gray-100 mb-4">
+                        <h5 class="text-xl font-bold text-gray-900">Brazo Robótico Industrial</h5>
+                        <p class="text-sm text-gray-500 mb-2">En desarrollo</p>
+                        <p class="text-gray-600">Diseño de un prototipo de brazo robótico de 3 grados de libertad para aplicaciones didácticas.</p>
+                    </div>
+
+                    <!-- Puedes añadir más tarjetas aquí -->
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =================================== -->
+    <!-- FOOTER (PIE DE PÁGINA) -->
+    <!-- =================================== -->
+    <footer class="bg-gray-950">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-base text-gray-500">
+                &copy; 2025 ANEIMERA UNMSM. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- =================================== -->
+    <!-- SCRIPTS -->
+    <!-- =================================== -->
+    
+    <!-- Script Principal de la Página (Sin Swiper) -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Constantes del DOM ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const header = document.getElementById('header');
+        
+        // --- LÓGICA DEL MENÚ MÓVIL ---
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- LÓGICA DE SCROLL SUAVE (para enlaces internos) ---
+        const navLinks = document.querySelectorAll('a[href^="index.html#"]');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const hashIndex = this.href.indexOf('#');
+                if (hashIndex !== -1) {
+                    e.preventDefault();
+                    window.location.href = this.href; // Ir a la página de inicio y al ancla
+                }
+                
+                // Cierra el menú móvil
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    });
+    </script>
+
+</body>
+</html>
