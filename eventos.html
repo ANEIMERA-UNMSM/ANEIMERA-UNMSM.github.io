@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -8,183 +8,197 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Swiper CSS (No se necesita aquí) -->
-
-    <!-- Estilos Personalizados y Fuentes -->
+    <!-- Estilos Personalizados -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
         }
 
-        /* --- Variables de Color ANEIMERA --- */
+        /* Variables & Utilidades */
         .bg-aneimera-red { background-color: #D50000; }
         .text-aneimera-red { color: #D50000; }
         .border-aneimera-red { border-color: #D50000; }
-        .hover\:bg-aneimera-red-dark:hover { background-color: #B00000; }
+        .hover\:text-aneimera-red:hover { color: #D50000; }
+        .bg-gradient-aneimera { background: linear-gradient(135deg, #D50000 0%, #9b0000 100%); }
+        
+        /* Glass Navbar */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* === DISEÑO DE CIRCUITOS PCB === */
+        .pcb-corner-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='600' height='600' viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cstyle%3E.trace%7Bfill:none;stroke:%23D50000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0.25;%7D.node%7Bfill:%23D50000;opacity:0.35;%7D%3C/style%3E%3C/defs%3E%3Cpath class='trace' d='M600,50 H500 L450,100 H350 L300,150' /%3E%3Ccircle class='node' cx='600' cy='50' r='6' /%3E%3Ccircle class='node' cx='300' cy='150' r='8' /%3E%3Cpath class='trace' d='M600,120 H520 L480,160 H400 L350,210 H250' /%3E%3Ccircle class='node' cx='600' cy='120' r='6' /%3E%3Ccircle class='node' cx='250' cy='210' r='8' /%3E%3Cpath class='trace' d='M600,200 H550 L500,250 V350 L450,400 H350' /%3E%3Ccircle class='node' cx='600' cy='200' r='6' /%3E%3Ccircle class='node' cx='350' cy='400' r='8' /%3E%3Cpath class='trace' d='M600,300 H580 L540,340 V420 L480,480 H400' /%3E%3Ccircle class='node' cx='600' cy='300' r='6' /%3E%3Ccircle class='node' cx='400' cy='480' r='8' /%3E%3Cpath class='trace' d='M450,0 V80 L400,130 H320' /%3E%3Ccircle class='node' cx='450' cy='0' r='6' /%3E%3Cpath class='trace' d='M300,0 V50 L250,100 V180 L200,230' /%3E%3Ccircle class='node' cx='300' cy='0' r='6' /%3E%3Ccircle class='node' cx='200' cy='230' r='8' /%3E%3Cpath class='trace' d='M150,0 V40 L180,70' /%3E%3Ccircle class='node' cx='150' cy='0' r='6' /%3E%3Ccircle class='node' cx='180' cy='70' r='5' /%3E%3Ccircle class='node' cx='500' cy='250' r='5' /%3E%3Ccircle class='node' cx='450' cy='100' r='5' /%3E%3Ccircle class='node' cx='480' cy='160' r='5' /%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: top right;
+            background-size: contain;
+            pointer-events: none;
+        }
+
+        .pcb-corner-bottom-left {
+            transform: rotate(180deg);
+            background-position: top right;
+        }
+
+        /* Animación Liyun */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
+        .liyun-floating { animation: float 4s ease-in-out infinite; }
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .animate-spin-slow { animation: spin-slow 12s linear infinite; }
     </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="text-gray-800 antialiased">
 
-    <!-- =================================== -->
-    <!-- NAVEGACIÓN (HEADER) -->
-    <!-- =================================== -->
-    <header id="header" class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-50 transition-all duration-300">
+    <!-- Liyun Flotante -->
+    <div id="liyun-mascot-floating" class="fixed bottom-8 right-8 z-50 transition-transform duration-300 ease-out liyun-floating hidden md:block group">
+        <div class="absolute inset-0 flex items-center justify-center -z-10 opacity-0 group-hover:opacity-40 transition-opacity duration-500">
+             <div class="w-32 h-32 rounded-full border-2 border-dashed border-aneimera-red animate-spin-slow"></div>
+        </div>
+        <img src="assets/liyun.png" alt="Liyun" class="w-28 h-auto object-contain drop-shadow-2xl cursor-pointer hover:scale-105 transition-transform" onerror="this.style.display='none'">
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="glass-nav fixed w-full z-50 transition-all duration-300">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                
-                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html"> <!-- Enlace a la página principal -->
-                        <img class="h-16 w-auto" src="assets/logo-aneimera-unmsm.png" alt="Logo ANEIMERA UNMSM"
-                        onerror="this.src='https://placehold.co/200x80/ffffff/D50000?text=LOGO'; this.onerror=null;">
+                    <a href="index.html" class="hover:opacity-80 transition-opacity">
+                        <img class="h-14 w-auto" src="assets/logo-aneimera-unmsm.png" alt="Logo ANEIMERA" onerror="this.src='https://placehold.co/200x80/ffffff/D50000?text=ANEIMERA';">
                     </a>
                 </div>
-                
-                <!-- Menú de Escritorio -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="index.html" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
-                        <a href="eventos.html" class="text-aneimera-red font-bold px-3 py-2 rounded-md text-sm font-medium transition-colors">Eventos</a> <!-- Enlace activo -->
-                        <a href="proyectos.html" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Proyectos</a>
-                        <a href="investigaciones.html" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Investigaciones</a>
-                        <a href="index.html#contacto" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Contacto</a>
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-600 hover:text-aneimera-red text-sm font-medium transition-colors tracking-wide">Inicio</a>
+                        <a href="eventos.html" class="text-aneimera-red font-bold text-sm transition-colors tracking-wide">Eventos</a>
+                        <a href="proyectos.html" class="text-gray-600 hover:text-aneimera-red text-sm font-medium transition-colors tracking-wide">Proyectos</a>
+                        <a href="investigaciones.html" class="text-gray-600 hover:text-aneimera-red text-sm font-medium transition-colors tracking-wide">Investigaciones</a>
+                        <a href="index.html#contacto" class="px-5 py-2.5 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-aneimera-red transition-all shadow-md transform hover:-translate-y-0.5">Contacto</a>
                     </div>
                 </div>
-                
-                <!-- Botón de Menú Móvil -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-aneimera-red focus:outline-none">
-                        <span class="text-3xl">☰</span>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
             </div>
         </nav>
-
-        <!-- Panel de Menú Móvil -->
-        <div id="mobile-menu" class="md:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
-                <a href="eventos.html" class="text-aneimera-red font-bold block px-3 py-2 rounded-md text-base font-medium">Eventos</a> <!-- Enlace activo -->
-                <a href="proyectos.html" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Proyectos</a>
-                <a href="investigaciones.html" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Investigaciones</a>
-                <a href="index.html#contacto" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Inicio</a>
+                <a href="eventos.html" class="text-aneimera-red font-bold block px-3 py-3 rounded-lg">Eventos</a>
+                <a href="proyectos.html" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Proyectos</a>
+                <a href="investigaciones.html" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Investigaciones</a>
+                <a href="index.html#contacto" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Contacto</a>
             </div>
         </div>
     </header>
 
-    <!-- =================================== -->
-    <!-- CONTENIDO PRINCIPAL DE EVENTOS -->
-    <!-- =================================== -->
-    <main class="pt-20"> <!-- Añade padding-top para compensar el header fijo -->
-
-        <!-- Encabezado de la Página -->
-        <section class="py-24 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Nuestros Pilares</h2>
-                <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
-                    Eventos y Congresos
-                </h3>
-                <p class="mt-6 text-lg text-gray-600">
+    <main class="pt-20">
+        <!-- Hero de Página Interna -->
+        <section class="py-24 bg-gray-50 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] pcb-corner-bg z-0"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <span class="text-aneimera-red font-bold tracking-widest uppercase text-sm">Nuestros Pilares</span>
+                <h3 class="mt-2 text-4xl md:text-5xl font-extrabold text-gray-900">Eventos y Congresos</h3>
+                <p class="mt-6 text-lg text-gray-600 max-w-3xl">
                     Organizamos y participamos en ponencias, talleres y congresos nacionales como el <strong>CONEIMERA</strong>, trayendo a expertos de la industria para complementar nuestra formación.
                 </p>
             </div>
         </section>
 
         <!-- Lista de Eventos -->
-        <section class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-6">
-                
-                <!-- Evento Próximo (Ejemplo) -->
-                <h4 class="text-2xl font-bold text-gray-900 mb-6">Próximos Eventos</h4>
-                <div class="p-8 rounded-lg bg-gray-100 text-center border border-dashed border-gray-400">
-                    <p class="text-gray-700 font-medium">Actualmente estamos planificando nuestra próxima serie de eventos. ¡Vuelve pronto para más detalles!</p>
+        <section class="py-24 bg-white relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] pcb-corner-bg pcb-corner-bottom-left z-0 opacity-50"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <!-- Próximos Eventos -->
+                <div class="flex items-center gap-4 mb-8">
+                    <h4 class="text-2xl font-bold text-gray-900">Próximos Eventos</h4>
+                    <div class="h-px bg-gray-200 flex-grow"></div>
                 </div>
                 
-                <!-- Eventos Pasados (Ejemplo) -->
-                <h4 class="text-2xl font-bold text-gray-900 mb-6 mt-16">Eventos Pasados</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Tarjeta de Evento 1 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg overflow-hidden">
-                        <img src="assets/pilarr-coneimera.jpg" alt="CONEIMERA" class="w-full h-48 object-contain object-center rounded-md bg-gray-100 mb-4 p-4">
-                        <h5 class="text-xl font-bold text-gray-900">CONEIMERA 2025</h5>
-                        <p class="text-sm text-gray-500 mb-2">15 - 19 Octubre, 2025</p>
-                        <p class="text-gray-600">Participación destacada de nuestra delegación en el Congreso Nacional de Estudiantes de Ingeniería.</p>
+                <div class="p-12 rounded-2xl bg-gray-50 text-center border border-dashed border-gray-300 relative overflow-hidden group">
+                     <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
+                    <p class="text-gray-500 font-medium relative z-10">Actualmente estamos planificando nuestra próxima serie de eventos. ¡Vuelve pronto para más detalles!</p>
+                </div>
+                
+                <!-- Eventos Pasados -->
+                <div class="flex items-center gap-4 mb-8 mt-20">
+                    <h4 class="text-2xl font-bold text-gray-900">Eventos Pasados</h4>
+                    <div class="h-px bg-gray-200 flex-grow"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Card 1 -->
+                    <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col">
+                        <div class="h-48 overflow-hidden bg-gray-100 relative">
+                            <img src="assets/pilar-coneimera.jpg" alt="CONEIMERA" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/400x300/f3f4f6/D50000?text=CONEIMERA';">
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900 shadow-sm">15 - 19 Octubre, 2025</div>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h5 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-aneimera-red transition-colors">CONEIMERA 2025</h5>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Participación destacada de nuestra delegación en el Congreso Nacional de Estudiantes de Ingeniería.</p>
+                        </div>
+                        <div class="px-6 pb-6">
+                             <a href="#" class="text-sm font-semibold text-aneimera-red hover:text-red-700 flex items-center">Ver galería <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+                        </div>
                     </div>
                     
-                    <!-- Tarjeta de Evento 2 (Placeholder) -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg overflow-hidden">
-                        <img src="https://placehold.co/400x300/eeeeee/333333?text=Semana+FIEE" alt="Semana FIEE" class="w-full h-48 object-cover rounded-md bg-gray-100 mb-4">
-                        <h5 class="text-xl font-bold text-gray-900">Semana de la FIEE</h5>
-                        <p class="text-sm text-gray-500 mb-2">Agosto, 2025</p>
-                        <p class="text-gray-600">Organización de charlas magistrales y talleres de la mano de empresas líderes en el sector.</p>
+                    <!-- Card 2 -->
+                    <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col">
+                        <div class="h-48 overflow-hidden bg-gray-100 relative">
+                            <img src="https://placehold.co/400x300/eeeeee/333333?text=Semana+FIEE" alt="Semana FIEE" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900 shadow-sm">Agosto, 2025</div>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h5 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-aneimera-red transition-colors">Semana de la FIEE</h5>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Organización de charlas magistrales y talleres de la mano de empresas líderes en el sector.</p>
+                        </div>
+                        <div class="px-6 pb-6">
+                             <a href="#" class="text-sm font-semibold text-aneimera-red hover:text-red-700 flex items-center">Ver galería <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+                        </div>
                     </div>
-
-                    <!-- Puedes añadir más tarjetas aquí -->
                 </div>
-
             </div>
         </section>
-
     </main>
 
-    <!-- =================================== -->
-    <!-- FOOTER (PIE DE PÁGINA) -->
-    <!-- =================================== -->
-    <footer class="bg-gray-950">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-base text-gray-500">
-                &copy; 2025 ANEIMERA UNMSM. Todos los derechos reservados.
-            </p>
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-lg font-bold text-white tracking-wider">ANEIMERA</span>
+                <span class="text-xs ml-2 px-2 py-1 bg-gray-900 rounded border border-gray-800">UNMSM</span>
+            </div>
+            <p class="text-sm">&copy; 2025 ANEIMERA. Hecho con <span class="text-aneimera-red">❤</span> por el equipo de desarrollo.</p>
         </div>
     </footer>
 
-    <!-- =================================== -->
-    <!-- SCRIPTS -->
-    <!-- =================================== -->
-    
-    <!-- Script Principal de la Página (Sin Swiper) -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Constantes del DOM ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const header = document.getElementById('header');
         
-        // --- LÓGICA DEL MENÚ MÓVIL ---
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // --- LÓGICA DE SCROLL SUAVE (para enlaces internos) ---
+        // Lógica de scroll suave
         const navLinks = document.querySelectorAll('a[href^="index.html#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                // Previene el comportamiento normal solo si es un enlace de ancla
                 const hashIndex = this.href.indexOf('#');
                 if (hashIndex !== -1) {
                     e.preventDefault();
-                    const targetId = this.href.substring(hashIndex); // Obtiene el #id
-                    
-                    // Si estamos en la página de inicio, hacemos scroll
-                    if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            const headerHeight = header.offsetHeight;
-                            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 20; 
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    } else {
-                        // Si estamos en otra página, simplemente vamos a la página de inicio con el ancla
-                        window.location.href = this.href;
-                    }
+                    window.location.href = this.href; 
                 }
-                
-                // Cierra el menú móvil
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                 }
@@ -192,6 +206,5 @@
         });
     });
     </script>
-
 </body>
 </html>
