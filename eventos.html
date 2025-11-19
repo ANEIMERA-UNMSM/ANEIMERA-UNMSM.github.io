@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventos - ANEIMERA UNMSM</title>
+    <title>Proyectos - ANEIMERA UNMSM</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,7 +18,6 @@
             overflow-x: hidden;
         }
 
-        /* Variables & Utilidades */
         .bg-aneimera-red { background-color: #D50000; }
         .text-aneimera-red { color: #D50000; }
         .border-aneimera-red { border-color: #D50000; }
@@ -32,7 +31,7 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* === DISEÑO DE CIRCUITOS PCB === */
+        /* === DISEÑO PCB MEJORADO === */
         .pcb-corner-bg {
             background-image: url("data:image/svg+xml,%3Csvg width='600' height='600' viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cstyle%3E.trace%7Bfill:none;stroke:%23D50000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0.25;%7D.node%7Bfill:%23D50000;opacity:0.35;%7D%3C/style%3E%3C/defs%3E%3Cpath class='trace' d='M600,50 H500 L450,100 H350 L300,150' /%3E%3Ccircle class='node' cx='600' cy='50' r='6' /%3E%3Ccircle class='node' cx='300' cy='150' r='8' /%3E%3Cpath class='trace' d='M600,120 H520 L480,160 H400 L350,210 H250' /%3E%3Ccircle class='node' cx='600' cy='120' r='6' /%3E%3Ccircle class='node' cx='250' cy='210' r='8' /%3E%3Cpath class='trace' d='M600,200 H550 L500,250 V350 L450,400 H350' /%3E%3Ccircle class='node' cx='600' cy='200' r='6' /%3E%3Ccircle class='node' cx='350' cy='400' r='8' /%3E%3Cpath class='trace' d='M600,300 H580 L540,340 V420 L480,480 H400' /%3E%3Ccircle class='node' cx='600' cy='300' r='6' /%3E%3Ccircle class='node' cx='400' cy='480' r='8' /%3E%3Cpath class='trace' d='M450,0 V80 L400,130 H320' /%3E%3Ccircle class='node' cx='450' cy='0' r='6' /%3E%3Cpath class='trace' d='M300,0 V50 L250,100 V180 L200,230' /%3E%3Ccircle class='node' cx='300' cy='0' r='6' /%3E%3Ccircle class='node' cx='200' cy='230' r='8' /%3E%3Cpath class='trace' d='M150,0 V40 L180,70' /%3E%3Ccircle class='node' cx='150' cy='0' r='6' /%3E%3Ccircle class='node' cx='180' cy='70' r='5' /%3E%3Ccircle class='node' cx='500' cy='250' r='5' /%3E%3Ccircle class='node' cx='450' cy='100' r='5' /%3E%3Ccircle class='node' cx='480' cy='160' r='5' /%3E%3C/svg%3E");
             background-repeat: no-repeat;
@@ -75,8 +74,8 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="index.html" class="text-gray-600 hover:text-aneimera-red text-sm font-medium transition-colors tracking-wide">Inicio</a>
-                        <a href="eventos.html" class="text-aneimera-red font-bold text-sm transition-colors tracking-wide">Eventos</a>
-                        <a href="proyectos.html" class="text-gray-600 hover:text-aneimera-red text-sm font-medium transition-colors tracking-wide">Proyectos</a>
+                        <a href="eventos.html" class="text-gray-600 hover:text-aneimera-red text-sm font-medium transition-colors tracking-wide">Eventos</a>
+                        <a href="proyectos.html" class="text-aneimera-red font-bold text-sm transition-colors tracking-wide">Proyectos</a>
                         <a href="investigaciones.html" class="text-gray-600 hover:text-aneimera-red text-sm font-medium transition-colors tracking-wide">Investigaciones</a>
                         <a href="index.html#contacto" class="px-5 py-2.5 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-aneimera-red transition-all shadow-md transform hover:-translate-y-0.5">Contacto</a>
                     </div>
@@ -91,8 +90,8 @@
         <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="index.html" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Inicio</a>
-                <a href="eventos.html" class="text-aneimera-red font-bold block px-3 py-3 rounded-lg">Eventos</a>
-                <a href="proyectos.html" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Proyectos</a>
+                <a href="eventos.html" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Eventos</a>
+                <a href="proyectos.html" class="text-aneimera-red font-bold block px-3 py-3 rounded-lg">Proyectos</a>
                 <a href="investigaciones.html" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Investigaciones</a>
                 <a href="index.html#contacto" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Contacto</a>
             </div>
@@ -105,63 +104,81 @@
             <div class="absolute top-0 right-0 w-[600px] h-[600px] pcb-corner-bg z-0"></div>
             <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <span class="text-aneimera-red font-bold tracking-widest uppercase text-sm">Nuestros Pilares</span>
-                <h3 class="mt-2 text-4xl md:text-5xl font-extrabold text-gray-900">Eventos y Congresos</h3>
+                <h3 class="mt-2 text-4xl md:text-5xl font-extrabold text-gray-900">Proyectos e Innovación</h3>
                 <p class="mt-6 text-lg text-gray-600 max-w-3xl">
-                    Organizamos y participamos en ponencias, talleres y congresos nacionales como el <strong>CONEIMERA</strong>, trayendo a expertos de la industria para complementar nuestra formación.
+                    Fomentamos la participación en concursos de robótica, eficiencia energética y automatización. Creamos espacios para que nuestros miembros desarrollen y prueben sus ideas.
                 </p>
             </div>
         </section>
 
-        <!-- Lista de Eventos -->
+        <!-- Lista de Proyectos -->
         <section class="py-24 bg-white relative overflow-hidden">
-            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] pcb-corner-bg pcb-corner-bottom-left z-0 opacity-50"></div>
-            
+             <div class="absolute bottom-0 left-0 w-[600px] h-[600px] pcb-corner-bg pcb-corner-bottom-left z-0 opacity-50"></div>
+             
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <!-- Próximos Eventos -->
-                <div class="flex items-center gap-4 mb-8">
-                    <h4 class="text-2xl font-bold text-gray-900">Próximos Eventos</h4>
+                
+                <!-- Proyecto Destacado -->
+                <div class="flex items-center gap-4 mb-10">
+                    <h4 class="text-2xl font-bold text-gray-900">Proyecto Destacado</h4>
                     <div class="h-px bg-gray-200 flex-grow"></div>
                 </div>
                 
-                <div class="p-12 rounded-2xl bg-gray-50 text-center border border-dashed border-gray-300 relative overflow-hidden group">
-                     <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
-                    <p class="text-gray-500 font-medium relative z-10">Actualmente estamos planificando nuestra próxima serie de eventos. ¡Vuelve pronto para más detalles!</p>
+                <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden md:flex group transition-all hover:shadow-2xl">
+                    <div class="md:w-1/2 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
+                        <img src="assets/pilar-robotica.jpg" alt="Concurso de Robótica" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/600x400/e5e5e5/333333?text=Robotica';">
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="px-3 py-1 bg-red-100 text-aneimera-red text-xs font-bold uppercase rounded-full">2do Lugar Nacional</span>
+                        </div>
+                        <h5 class="text-3xl font-extrabold text-gray-900 mb-2">Equipo de Robótica UNMSM</h5>
+                        <p class="text-sm text-gray-500 mb-6">Competencia Inter-Universitaria 2025</p>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Nuestro equipo obtuvo el 2do lugar en la competencia nacional de robótica, diseñando y construyendo un robot seguidor de línea con evasión de obstáculos.
+                        </p>
+                        
+                        <div class="mb-8">
+                            <h6 class="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3">Stack Tecnológico:</h6>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">Arduino</span>
+                                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">C++</span>
+                                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">Impresión 3D</span>
+                                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">Sensores IR</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Eventos Pasados -->
-                <div class="flex items-center gap-4 mb-8 mt-20">
-                    <h4 class="text-2xl font-bold text-gray-900">Eventos Pasados</h4>
+                <!-- Galería -->
+                <div class="flex items-center gap-4 mb-10 mt-24">
+                    <h4 class="text-2xl font-bold text-gray-900">Otros Proyectos</h4>
                     <div class="h-px bg-gray-200 flex-grow"></div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- Card 1 -->
-                    <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col">
-                        <div class="h-48 overflow-hidden bg-gray-100 relative">
-                            <img src="assets/pilar-coneimera.jpg" alt="CONEIMERA" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/400x300/f3f4f6/D50000?text=CONEIMERA';">
-                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900 shadow-sm">15 - 19 Octubre, 2025</div>
+                    <!-- Project Card 1 -->
+                    <div class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://placehold.co/400x300/eeeeee/333333?text=Proyecto+Eficiencia" alt="Eficiencia" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                         </div>
-                        <div class="p-6 flex-grow">
-                            <h5 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-aneimera-red transition-colors">CONEIMERA 2025</h5>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Participación destacada de nuestra delegación en el Congreso Nacional de Estudiantes de Ingeniería.</p>
-                        </div>
-                        <div class="px-6 pb-6">
-                             <a href="#" class="text-sm font-semibold text-aneimera-red hover:text-red-700 flex items-center">Ver galería <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+                        <div class="p-6">
+                            <h5 class="text-lg font-bold text-gray-900 mb-2">Eficiencia Energética FIEE</h5>
+                            <p class="text-gray-500 text-xs mb-3">2025 • Finalizado</p>
+                            <p class="text-gray-600 text-sm line-clamp-3">Análisis y propuesta de mejora para la reducción del consumo energético en los laboratorios de la facultad.</p>
                         </div>
                     </div>
                     
-                    <!-- Card 2 -->
-                    <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col">
-                        <div class="h-48 overflow-hidden bg-gray-100 relative">
-                            <img src="https://placehold.co/400x300/eeeeee/333333?text=Semana+FIEE" alt="Semana FIEE" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900 shadow-sm">Agosto, 2025</div>
+                    <!-- Project Card 2 -->
+                    <div class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://placehold.co/400x300/dddddd/333333?text=Automatización" alt="Brazo Robotico" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-aneimera-red text-white px-2 py-1 rounded text-xs font-bold">En Curso</div>
                         </div>
-                        <div class="p-6 flex-grow">
-                            <h5 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-aneimera-red transition-colors">Semana de la FIEE</h5>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Organización de charlas magistrales y talleres de la mano de empresas líderes en el sector.</p>
-                        </div>
-                        <div class="px-6 pb-6">
-                             <a href="#" class="text-sm font-semibold text-aneimera-red hover:text-red-700 flex items-center">Ver galería <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+                        <div class="p-6">
+                            <h5 class="text-lg font-bold text-gray-900 mb-2">Brazo Robótico Industrial</h5>
+                            <p class="text-gray-500 text-xs mb-3">2025 • Prototipado</p>
+                            <p class="text-gray-600 text-sm line-clamp-3">Diseño de un prototipo de brazo robótico de 3 grados de libertad para aplicaciones didácticas.</p>
                         </div>
                     </div>
                 </div>
@@ -190,7 +207,7 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Lógica de scroll suave
+        // Scroll suave
         const navLinks = document.querySelectorAll('a[href^="index.html#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
