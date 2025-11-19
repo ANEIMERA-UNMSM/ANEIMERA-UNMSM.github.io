@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -8,181 +8,212 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Estilos Personalizados y Fuentes -->
+    <!-- Estilos Personalizados -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
         }
 
-        /* --- Variables de Color ANEIMERA --- */
         .bg-aneimera-red { background-color: #D50000; }
         .text-aneimera-red { color: #D50000; }
-        .border-aneimera-red { border-color: #D50000; }
-        .hover\:bg-aneimera-red-dark:hover { background-color: #B00000; }
+        .hover\:text-aneimera-red:hover { color: #D50000; }
+        .bg-gradient-aneimera { background: linear-gradient(135deg, #D50000 0%, #9b0000 100%); }
+        
+        /* Glass Navbar */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* === DISEÑO PCB MEJORADO === */
+        .pcb-corner-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='600' height='600' viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cstyle%3E.trace%7Bfill:none;stroke:%23D50000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0.25;%7D.node%7Bfill:%23D50000;opacity:0.35;%7D%3C/style%3E%3C/defs%3E%3Cpath class='trace' d='M600,50 H500 L450,100 H350 L300,150' /%3E%3Ccircle class='node' cx='600' cy='50' r='6' /%3E%3Ccircle class='node' cx='300' cy='150' r='8' /%3E%3Cpath class='trace' d='M600,120 H520 L480,160 H400 L350,210 H250' /%3E%3Ccircle class='node' cx='600' cy='120' r='6' /%3E%3Ccircle class='node' cx='250' cy='210' r='8' /%3E%3Cpath class='trace' d='M600,200 H550 L500,250 V350 L450,400 H350' /%3E%3Ccircle class='node' cx='600' cy='200' r='6' /%3E%3Ccircle class='node' cx='350' cy='400' r='8' /%3E%3Cpath class='trace' d='M600,300 H580 L540,340 V420 L480,480 H400' /%3E%3Ccircle class='node' cx='600' cy='300' r='6' /%3E%3Ccircle class='node' cx='400' cy='480' r='8' /%3E%3Cpath class='trace' d='M450,0 V80 L400,130 H320' /%3E%3Ccircle class='node' cx='450' cy='0' r='6' /%3E%3Cpath class='trace' d='M300,0 V50 L250,100 V180 L200,230' /%3E%3Ccircle class='node' cx='300' cy='0' r='6' /%3E%3Ccircle class='node' cx='200' cy='230' r='8' /%3E%3Cpath class='trace' d='M150,0 V40 L180,70' /%3E%3Ccircle class='node' cx='150' cy='0' r='6' /%3E%3Ccircle class='node' cx='180' cy='70' r='5' /%3E%3Ccircle class='node' cx='500' cy='250' r='5' /%3E%3Ccircle class='node' cx='450' cy='100' r='5' /%3E%3Ccircle class='node' cx='480' cy='160' r='5' /%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: top right;
+            background-size: contain;
+            pointer-events: none;
+        }
+        .pcb-corner-bottom-left { transform: rotate(180deg); background-position: top right; }
+        
+        /* Animación Liyun */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
+        .liyun-floating { animation: float 4s ease-in-out infinite; }
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .animate-spin-slow { animation: spin-slow 12s linear infinite; }
     </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="text-gray-800 antialiased">
 
-    <!-- =================================== -->
-    <!-- NAVEGACIÓN (HEADER) -->
-    <!-- =================================== -->
-    <header id="header" class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-50 transition-all duration-300">
+    <!-- Liyun Flotante -->
+    <div id="liyun-mascot-floating" class="fixed bottom-8 right-8 z-50 transition-transform duration-300 ease-out liyun-floating hidden md:block group">
+        <div class="absolute inset-0 flex items-center justify-center -z-10 opacity-0 group-hover:opacity-40 transition-opacity duration-500">
+             <div class="w-32 h-32 rounded-full border-2 border-dashed border-aneimera-red animate-spin-slow"></div>
+        </div>
+        <img src="assets/liyun.png" alt="Liyun" class="w-28 h-auto object-contain drop-shadow-2xl cursor-pointer hover:scale-105 transition-transform" onerror="this.style.display='none'">
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="glass-nav fixed w-full z-50 transition-all duration-300">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                
-                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html"> <!-- Enlace a la página principal -->
-                        <img class="h-16 w-auto" src="assets/logo-aneimera-unmsm.png" alt="Logo ANEIMERA UNMSM"
-                        onerror="this.src='https://placehold.co/200x80/ffffff/D50000?text=LOGO'; this.onerror=null;">
+                    <a href="index.html" class="hover:opacity-80 transition-opacity">
+                        <img class="h-14 w-auto" src="assets/logo-aneimera-unmsm.png" alt="Logo ANEIMERA" onerror="this.src='https://placehold.co/200x80/ffffff/D50000?text=ANEIMERA';">
                     </a>
                 </div>
-                
-                <!-- Menú de Escritorio -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="index.html" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
-                        <a href="eventos.html" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Eventos</a>
-                        <a href="proyectos.html" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Proyectos</a>
-                        <a href="investigaciones.html" class="text-aneimera-red font-bold px-3 py-2 rounded-md text-sm font-medium transition-colors">Investigaciones</a> <!-- Enlace activo -->
-                        <a href="index.html#contacto" class="text-gray-700 hover:text-aneimera-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Contacto</a>
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-600 hover:text-aneimera-red text-sm font-medium transition-colors tracking-wide">Inicio</a>
+                        <a href="eventos.html" class="text-gray-600 hover:text-aneimera-red text-sm font-medium transition-colors tracking-wide">Eventos</a>
+                        <a href="proyectos.html" class="text-gray-600 hover:text-aneimera-red text-sm font-medium transition-colors tracking-wide">Proyectos</a>
+                        <a href="investigaciones.html" class="text-aneimera-red font-bold text-sm transition-colors tracking-wide">Investigaciones</a>
+                        <a href="index.html#contacto" class="px-5 py-2.5 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-aneimera-red transition-all shadow-md transform hover:-translate-y-0.5">Contacto</a>
                     </div>
                 </div>
-                
-                <!-- Botón de Menú Móvil -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-aneimera-red focus:outline-none">
-                        <span class="text-3xl">☰</span>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
             </div>
         </nav>
-
-        <!-- Panel de Menú Móvil -->
-        <div id="mobile-menu" class="md:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
-                <a href="eventos.html" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Eventos</a>
-                <a href="proyectos.html" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Proyectos</a>
-                <a href="investigaciones.html" class="text-aneimera-red font-bold block px-3 py-2 rounded-md text-base font-medium">Investigaciones</a> <!-- Enlace activo -->
-                <a href="index.html#contacto" class="text-gray-700 hover:text-aneimera-red block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Inicio</a>
+                <a href="eventos.html" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Eventos</a>
+                <a href="proyectos.html" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Proyectos</a>
+                <a href="investigaciones.html" class="text-aneimera-red font-bold block px-3 py-3 rounded-lg">Investigaciones</a>
+                <a href="index.html#contacto" class="text-gray-600 block px-3 py-3 rounded-lg font-medium">Contacto</a>
             </div>
         </div>
     </header>
 
-    <!-- =================================== -->
-    <!-- CONTENIDO PRINCIPAL DE INVESTIGACIONES -->
-    <!-- =================================== -->
-    <main class="pt-20"> <!-- Añade padding-top para compensar el header fijo -->
-
-        <!-- Encabezado de la Página -->
-        <section class="py-24 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-base font-semibold text-aneimera-red tracking-wide uppercase">Nuestros Pilares</h2>
-                <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
-                    Investigación y Academia
-                </h3>
-                <p class="mt-6 text-lg text-gray-600">
+    <main class="pt-20">
+        <!-- Hero de Página Interna -->
+        <section class="py-24 bg-gray-50 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] pcb-corner-bg z-0"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <span class="text-aneimera-red font-bold tracking-widest uppercase text-sm">Nuestros Pilares</span>
+                <h3 class="mt-2 text-4xl md:text-5xl font-extrabold text-gray-900">Investigación y Academia</h3>
+                <p class="mt-6 text-lg text-gray-600 max-w-3xl">
                     Impulsamos círculos de estudio, publicamos *papers* y colaboramos con docentes de la FIEE para mantenernos a la vanguardia del conocimiento tecnológico.
                 </p>
             </div>
         </section>
 
         <!-- Lista de Investigaciones -->
-        <section class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-6">
+        <section class="py-24 bg-white relative overflow-hidden">
+             <div class="absolute bottom-0 left-0 w-[600px] h-[600px] pcb-corner-bg pcb-corner-bottom-left z-0 opacity-50"></div>
+             
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
                 
-                <!-- Publicaciones Recientes (Ejemplo) -->
-                <h4 class="text-2xl font-bold text-gray-900 mb-6">Publicaciones Recientes</h4>
+                <!-- Publicaciones Recientes -->
+                <div class="flex items-center gap-4 mb-10">
+                    <h4 class="text-2xl font-bold text-gray-900">Publicaciones Recientes</h4>
+                    <div class="h-px bg-gray-200 flex-grow"></div>
+                </div>
+
                 <div class="space-y-6">
                     <!-- Paper 1 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h5 class="text-xl font-bold text-gray-900">Aplicación de Redes Neuronales Convolucionales para la Detección de Fallos en Motores de Inducción</h5>
-                        <p class="text-sm text-gray-500 mb-2">Publicado en: *IEEE Latin America Transactions, 2025*</p>
-                        <p class="text-gray-600">
-                            <strong>Autores:</strong> Miembro ANEIMERA, Miembro ANEIMERA, Dr. Docente FIEE.
-                        </p>
-                        <a href="#" class="inline-block mt-4 font-medium text-aneimera-red hover:text-aneimera-red-dark transition-colors">
-                            Leer Paper &rarr;
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:shadow-xl transition-all">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold uppercase rounded">Paper</span>
+                                <span class="text-xs text-gray-400">IEEE Latin America Transactions, 2025</span>
+                            </div>
+                            <h5 class="text-xl font-bold text-gray-900 group-hover:text-aneimera-red transition-colors">Aplicación de Redes Neuronales Convolucionales para la Detección de Fallos en Motores de Inducción</h5>
+                            <p class="text-gray-600 mt-2 text-sm"><strong>Autores:</strong> Miembro ANEIMERA, Miembro ANEIMERA, Dr. Docente FIEE.</p>
+                        </div>
+                        <a href="#" class="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-50 text-aneimera-red hover:bg-aneimera-red hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                     
                     <!-- Paper 2 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h5 class="text-xl font-bold text-gray-900">Optimización del Flujo de Carga en Sistemas de Potencia Aislados usando Algoritmos Genéticos</h5>
-                        <p class="text-sm text-gray-500 mb-2">Presentado en: *CONEIMERA 2025*</g>
-                        <p class="text-gray-600">
-                            <strong>Autores:</strong> Miembro ANEIMERA, Miembro ANEIMERA.
-                        </p>
-                        <a href="#" class="inline-block mt-4 font-medium text-aneimera-red hover:text-aneimera-red-dark transition-colors">
-                            Ver Presentación &rarr;
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:shadow-xl transition-all">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold uppercase rounded">Conferencia</span>
+                                <span class="text-xs text-gray-400">CONEIMERA 2025</span>
+                            </div>
+                            <h5 class="text-xl font-bold text-gray-900 group-hover:text-aneimera-red transition-colors">Optimización del Flujo de Carga en Sistemas de Potencia Aislados usando Algoritmos Genéticos</h5>
+                            <p class="text-gray-600 mt-2 text-sm"><strong>Autores:</strong> Miembro ANEIMERA, Miembro ANEIMERA.</p>
+                        </div>
+                        <a href="#" class="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-50 text-aneimera-red hover:bg-aneimera-red hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </div>
 
-                <!-- Círculos de Estudio (Ejemplo) -->
-                <h4 class="text-2xl font-bold text-gray-900 mb-6 mt-16">Círculos de Estudio</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Círculos de Estudio -->
+                <div class="flex items-center gap-4 mb-10 mt-24">
+                    <h4 class="text-2xl font-bold text-gray-900">Círculos de Estudio</h4>
+                    <div class="h-px bg-gray-200 flex-grow"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <!-- Círculo 1 -->
-                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-aneimera-red/30 transition-colors group">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
+                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        </div>
                         <h5 class="text-xl font-bold text-gray-900">Círculo de IA Aplicada</h5>
-                        <p class="text-gray-600 mt-2">Reuniones semanales para estudiar modelos de *Machine Learning* y su aplicación en la ingeniería eléctrica y mecánica.</p>
-                        <span class="inline-block mt-4 bg-aneimera-red/10 text-aneimera-red text-sm font-medium px-3 py-1 rounded-full">Martes 6:00 PM</span>
+                        <p class="text-gray-600 mt-3 leading-relaxed">Reuniones semanales para estudiar modelos de *Machine Learning* y su aplicación en la ingeniería eléctrica y mecánica.</p>
+                        <div class="mt-6 flex items-center gap-3">
+                             <span class="inline-block bg-white border border-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-full">Martes 6:00 PM</span>
+                        </div>
                     </div>
                     <!-- Círculo 2 -->
-                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-aneimera-red/30 transition-colors group">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-yellow-600 mb-6 group-hover:scale-110 transition-transform">
+                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
                         <h5 class="text-xl font-bold text-gray-900">Círculo de Sistemas de Potencia</h5>
-                        <p class="text-gray-600 mt-2">Análisis de casos y simulación de sistemas eléctricos de potencia utilizando software especializado como ETAP y DIgSILENT.</p>
-                        <span class="inline-block mt-4 bg-aneimera-red/10 text-aneimera-red text-sm font-medium px-3 py-1 rounded-full">Jueves 5:00 PM</span>
+                        <p class="text-gray-600 mt-3 leading-relaxed">Análisis de casos y simulación de sistemas eléctricos de potencia utilizando software especializado como ETAP y DIgSILENT.</p>
+                        <div class="mt-6 flex items-center gap-3">
+                             <span class="inline-block bg-white border border-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-full">Jueves 5:00 PM</span>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </section>
-
     </main>
 
-    <!-- =================================== -->
-    <!-- FOOTER (PIE DE PÁGINA) -->
-    <!-- =================================== -->
-    <footer class="bg-gray-950">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-base text-gray-500">
-                &copy; 2025 ANEIMERA UNMSM. Todos los derechos reservados.
-            </p>
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-lg font-bold text-white tracking-wider">ANEIMERA</span>
+                <span class="text-xs ml-2 px-2 py-1 bg-gray-900 rounded border border-gray-800">UNMSM</span>
+            </div>
+            <p class="text-sm">&copy; 2025 ANEIMERA. Hecho con <span class="text-aneimera-red">❤</span> por el equipo de desarrollo.</p>
         </div>
     </footer>
 
-    <!-- =================================== -->
-    <!-- SCRIPTS -->
-    <!-- =================================== -->
-    
-    <!-- Script Principal de la Página (Sin Swiper) -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Constantes del DOM ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        const header = document.getElementById('header');
         
-        // --- LÓGICA DEL MENÚ MÓVIL ---
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-
-        // --- LÓGICA DE SCROLL SUAVE (para enlaces internos) ---
+        
+        // Scroll suave para enlaces de ancla internos
         const navLinks = document.querySelectorAll('a[href^="index.html#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 const hashIndex = this.href.indexOf('#');
                 if (hashIndex !== -1) {
                     e.preventDefault();
-                    window.location.href = this.href; // Ir a la página de inicio y al ancla
+                    window.location.href = this.href; 
                 }
-                
-                // Cierra el menú móvil
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                 }
@@ -190,6 +221,5 @@
         });
     });
     </script>
-
 </body>
 </html>
